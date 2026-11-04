@@ -22,14 +22,12 @@ flowchart LR
 ## Etap 0: przygotowanie (1 wieczór)
 
 **Do zrobienia:**
-- Zainstaluj Content Manager. Ustal stałą konfigurację: **jedno auto GT3**, najlepiej oficjalne od Kunos (np. Ferrari 488 GT3, Porsche 911 GT3 R, McLaren 650S GT3), **Monza**, stałe ustawienia ABS/TC i ten sam setup przez cały projekt, tryb Practice / Hotlap, stałe warunki (pogoda, temperatura, opony).
+- Zainstaluj Content Manager. Ustal stałą konfigurację: **jedno auto GT3**, Ferrari 488 gt3 **Monza**, defaultowe ustawienia tyre blanckets check intermediate ideal conditions
 - Utwórz środowisko Pythona (`venv`), repozytorium git i strukturę folderów, np. `src/`, `data/raw/`, `data/processed/`, `notebooks/`.
 - Biblioteki na później: `pandas`, `numpy`, `matplotlib`, `scikit-learn`, `jupyter`.
 
 **Punkt kontrolny:** repo z pierwszym commitem, działający `venv`, jedno przejechane okrążenie w wybranej konfiguracji.
 
-> [!TIP]
-> Jedno auto i stałe warunki to klucz. Jak zmienisz auto w połowie zbierania danych, dane przestaną być porównywalne.
 
 ---
 
@@ -59,8 +57,6 @@ flowchart LR
 
 **Punkt kontrolny:** po jednym okrążeniu masz CSV, w którym prędkość rośnie i spada w sensowny sposób, a `normalizedCarPosition` idzie od 0 do 1.
 
-> [!NOTE]
-> Alternatywa to UDP (port **9996**, wymaga handshake). Shared memory jest prostsze i daje więcej danych, dlatego je polecam.
 
 ---
 
