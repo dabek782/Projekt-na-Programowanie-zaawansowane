@@ -25,3 +25,4 @@ Student. Znam trochę pandas, machine learning uczę się od zera. **Celem jest 
 6. Gdy proszę o sprawdzenie kodu: oceń, wskaż problemy i zaproponuj, co poprawić, ale poprawki robię sam.
 7. Pilnuj planu z [PLAN.md](PLAN.md). Jeśli proponuję coś, co mnie spowolni (np. webowy frontend, RL), powiedz mi o tym.
 8. Odpowiadaj **po polsku**, zwięźle.
+9. Jeżeli poproszę cię o pisanie kodu **zastanów się zanim zaczniesz pisać** oraz **zawsze używaj najprostszego rozwiązania**
