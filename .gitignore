@@ -1,2 +1,4 @@
 env
 ACdocs.pdf
+*.csv
+*.parquet
