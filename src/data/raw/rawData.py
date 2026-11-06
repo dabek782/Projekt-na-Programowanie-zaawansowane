@@ -73,6 +73,8 @@ data_physics = mmap.mmap(-1, ctypes.sizeof(File_physics), r"Local\acpmf_physics"
 data_graphics = mmap.mmap(-1, ctypes.sizeof(File_graphics), r"Local\acpmf_graphics")
 PreviousPacketId = -1
 track_data = []
+completedLaps = 0
+file_name = f"data_telemetry_{int(time.time())}.parquet"
 try:
     print("Getting data")
     while True:
@@ -84,10 +86,18 @@ try:
                 track_data.append([FilephysicsData.packetId,FilephysicsData.gas , FilephysicsData.brake , FilephysicsData.steerAngle , FilephysicsData.speedKmh , FilephysicsData.gear , FilephysicsData.rpms , FilephysicsData.accG[0] , FilephysicsData.accG[1] , FilephysicsData.accG[2] , FilephysicsData.numberOfTyresOut , file_graphics_data.normalizedCarPosition ,  file_graphics_data.completedLaps ,  file_graphics_data.iCurrentTime ,  file_graphics_data.iLastTime ,  file_graphics_data.iBestTime ,  file_graphics_data.status ,  file_graphics_data.isInPit , file_graphics_data.carCoordinates[0] , file_graphics_data.carCoordinates[1] , file_graphics_data.carCoordinates[2]    ])
                 PreviousPacketId = FilephysicsData.packetId
         time.sleep(1 / 60)
+        if completedLaps != file_graphics_data.completedLaps:
+            completedLaps = file_graphics_data.completedLaps
+            folder = Path(__file__).parent
+            df = pd.DataFrame(track_data , columns=["packetId" , "gas" , "brake" , "steerAngle" , "speedKmh" , "gear" , "rpms" , "accG_x" , "accG_y" , "accG_z" , "numberOfTyresOut" ,"normalizedCarPosition" , "completedLaps" , "iCurrentTime" , "iLastTime" , "iBestTime" , "status" , "isInPit" , "carCoordinates_x" , "carCoordinates_y", "carCoordinates_z" ])
+            print(f"Zapisano{len(df)} wierszy")
+            df.to_parquet(folder / file_name , index=False)
+            print(f"zapisano okrążenie + completedLaps")
+
 except KeyboardInterrupt:
 
         folder = Path(__file__).parent
         df = pd.DataFrame(track_data , columns=["packetId" , "gas" , "brake" , "steerAngle" , "speedKmh" , "gear" , "rpms" , "accG_x" , "accG_y" , "accG_z" , "numberOfTyresOut" ,"normalizedCarPosition" , "completedLaps" , "iCurrentTime" , "iLastTime" , "iBestTime" , "status" , "isInPit" , "carCoordinates_x" , "carCoordinates_y", "carCoordinates_z" ])
         print(f"Zapisano{len(df)} wierszy")
-        df.to_parquet(folder / f"Data_telemetry_{int(time.time())}.csv" , index=False)
+        df.to_parquet(folder / file_name , index=False)
 
