@@ -92,12 +92,12 @@ try:
             df = pd.DataFrame(track_data , columns=["packetId" , "gas" , "brake" , "steerAngle" , "speedKmh" , "gear" , "rpms" , "accG_x" , "accG_y" , "accG_z" , "numberOfTyresOut" ,"normalizedCarPosition" , "completedLaps" , "iCurrentTime" , "iLastTime" , "iBestTime" , "status" , "isInPit" , "carCoordinates_x" , "carCoordinates_y", "carCoordinates_z" ])
             print(f"Zapisano{len(df)} wierszy")
             df.to_parquet(folder / file_name , index=False)
-            print(f"zapisano okrążenie + completedLaps")
+            print(f"zapisano okrążenie + {completedLaps}")
 
 except KeyboardInterrupt:
 
         folder = Path(__file__).parent
         df = pd.DataFrame(track_data , columns=["packetId" , "gas" , "brake" , "steerAngle" , "speedKmh" , "gear" , "rpms" , "accG_x" , "accG_y" , "accG_z" , "numberOfTyresOut" ,"normalizedCarPosition" , "completedLaps" , "iCurrentTime" , "iLastTime" , "iBestTime" , "status" , "isInPit" , "carCoordinates_x" , "carCoordinates_y", "carCoordinates_z" ])
-        print(f"Zapisano{len(df)} wierszy")
+        print(f"Zapisano{len(df)} wierszy") 
         df.to_parquet(folder / file_name , index=False)
 
