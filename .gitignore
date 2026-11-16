@@ -2,3 +2,4 @@ env
 ACdocs.pdf
 *.csv
 *.parquet
+AutoMl_*
